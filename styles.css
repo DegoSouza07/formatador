@@ -16,7 +16,7 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 0px 12px;
+  padding: 0px 12px 8px;
 }
 
 .djulg-logo {
@@ -28,18 +28,18 @@ body {
   font-size: 1.8rem;
   font-weight: 700;
   color: #ffffff;
-  margin: 0 0 2px;
+  margin: 0;
   line-height: 1.2;
 }
 
 .djulg-subtitle {
   font-size: 1.2rem;
   color: #a8bfe0;
-  margin: 0;
+  margin: 0 5px;
 }
 
 .djulg-header-text {
-  padding-top: 12px;
+  padding-top: 20px;
 }
 
 /* ---- Botão principal ---- */
