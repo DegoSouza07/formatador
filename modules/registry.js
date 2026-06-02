@@ -1,3 +1,5 @@
+import { meta as contadorPrazosMeta } from './ContadorPrazos.js';
+
 const createModuleDef = ({ type, label, showExtracaoInfo, path }) => ({
   type,
   label,
@@ -36,6 +38,13 @@ export const MODULES = [
     label: "Extração Pauta (pós-sessão)",
     showExtracaoInfo: true,
     path: "./extracaoPautaPosSessao.js",
+  }),
+  // ADICIONADO: Nova entrada utilizando os metadados do Contador de Prazos
+  createModuleDef({
+    type: contadorPrazosMeta.value,       // resulta em "contadorPrazos"
+    label: contadorPrazosMeta.label,       // resulta em "Contador de Prazos"
+    showExtracaoInfo: false,               // ajuste para true se esse módulo precisar do alerta de extração
+    path: "./ContadorPrazos.js",
   }),
 ];
 
