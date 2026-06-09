@@ -261,8 +261,8 @@ function localizarTabelaRelacao(doc) {
       .map((cell) => normalizarCabecalho(cell.textContent));
 
     if (
-      headers.some((h) => h.includes("processo")) &&
-      headers.some((h) => h.includes("tipo de inclusao"))
+      headers.some((h) => h === "processo") &&
+      (headers.some((h) => h.includes("tipo de inclusao")) || headers.some((h) => h === "relator"))
     ) {
       return tabela;
     }
