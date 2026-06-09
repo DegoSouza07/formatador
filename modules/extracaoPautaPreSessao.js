@@ -87,8 +87,8 @@ export function mount(container) {
       setStatus("Lendo HTMLs...");
 
       const [html1, html2] = await Promise.all([
-        fileDoc1.text(),
-        fileDoc2.text(),
+        new Promise((res, rej) => { const r = new FileReader(); r.onload = e => res(e.target.result); r.onerror = () => rej(new Error('Erro ao ler HTML 1')); r.readAsText(fileDoc1, 'utf-8'); }),
+        new Promise((res, rej) => { const r = new FileReader(); r.onload = e => res(e.target.result); r.onerror = () => rej(new Error('Erro ao ler HTML 2')); r.readAsText(fileDoc2, 'utf-8'); }),
       ]);
       const processosDoc2 = extrairProcessosDoc2(html2);
       const resultado = extrairLinhasDoc1(html1, processosDoc2);
