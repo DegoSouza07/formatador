@@ -254,18 +254,16 @@ function extrairProcessosDoc2(html) {
 }
 
 function localizarTabelaRelacao(doc) {
-  const tabelas = Array.from(doc.querySelectorAll("table"));
+  const tabelas = Array.from(doc.querySelectorAll('table'));
   for (const tabela of tabelas) {
-    const headers = Array.from(tabela.querySelectorAll("tr th, tr td"))
-      .slice(0, 12)
+    const headers = Array.from(tabela.querySelectorAll('tr th, tr td'))
+      .slice(0, 15)
       .map((cell) => normalizarCabecalho(cell.textContent));
-
-    if (
-      headers.some((h) => h === "processo") &&
-      (headers.some((h) => h.includes("tipo de inclusao")) || headers.some((h) => h === "relator"))
-    ) {
-      return tabela;
-    }
+    const temProcesso   = headers.some((h) => h === 'processo');
+    const temTipoInclus = headers.some((h) => h.includes('tipo de inclusao') || h.includes('tipo inclusao'));
+    const temRelator    = headers.some((h) => h === 'relator');
+    const temUnidade    = headers.some((h) => h.includes('unidade'));
+    if (temProcesso && temTipoInclus && temRelator && temUnidade) return tabela;
   }
   return null;
 }
